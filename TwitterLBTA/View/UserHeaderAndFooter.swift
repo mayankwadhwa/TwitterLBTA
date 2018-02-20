@@ -20,6 +20,10 @@ class UserHeader: DatasourceCell{
     }()
     
     override func setupViews() {
+        super.setupViews()
+        separatorLineView.isHidden = false
+        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
+        
         addSubview(textLabel)
         textLabel.anchor(self.topAnchor, left: self.leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 8, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
     }
@@ -27,8 +31,6 @@ class UserHeader: DatasourceCell{
 }
 
 class UserFooter: DatasourceCell{
-    
-
     
     let textLabel: UILabel = {
         let label = UILabel()
@@ -47,10 +49,15 @@ class UserFooter: DatasourceCell{
 }
 
 class UserCell: DatasourceCell {
-    
+// Every DatasourceCell has access to the datasource item
     override var datasourceItem: Any? {
         didSet {
-//            nameLabel.text = datasourceItem as? String
+// Downcast the datasourceItem as User if not then do nothing
+            guard let user = datasourceItem as? User else { return }
+            nameLabel.text = user.name
+            userNameLabel.text = user.username
+            bioTextView.text = user.bioText
+            profileImageView.image = user.profileImage
         }
     }
     
@@ -107,6 +114,9 @@ class UserCell: DatasourceCell {
     
     override func setupViews() {
         super.setupViews()
+
+        separatorLineView.isHidden = false
+        separatorLineView.backgroundColor = UIColor(r: 230, g: 230, b: 230)
 
         
         addSubview(profileImageView)
