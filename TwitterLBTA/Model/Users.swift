@@ -6,10 +6,11 @@
 //  Copyright © 2018 ShinobiTech. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
+//Struct is easy to use and automatically gives the constructor for the struct object
 struct User {
     let name: String
     let username: String
     let bioText: String
+    let profileImage: UIImage
 }
