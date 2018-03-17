@@ -17,8 +17,8 @@
 		A827076D2043F4560065B53C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A827076C2043F4560065B53C /* Tweet.swift */; };
 		A884559720359FBD00367D3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A884559620359FBD00367D3B /* AppDelegate.swift */; };
 		A88455A120359FBD00367D3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A884559F20359FBD00367D3B /* LaunchScreen.storyboard */; };
-		A88455A92035A29500367D3B /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88455A82035A29500367D3B /* HomeController.swift */; };
 		A8BC79C02036CDF000B40F14 /* HomeDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC79BF2036CDF000B40F14 /* HomeDataSourceController.swift */; };
+		A8CEAC802047DA0E00ABBABC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEAC7F2047DA0E00ABBABC /* Service.swift */; };
 		B4AB1916D886E3E4BA543C37 /* Pods_TwitterLBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1A9CA797AF919924FC628C /* Pods_TwitterLBTA.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +37,8 @@
 		A884559620359FBD00367D3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A88455A020359FBD00367D3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A88455A220359FBD00367D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A88455A82035A29500367D3B /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		A8BC79BF2036CDF000B40F14 /* HomeDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSourceController.swift; sourceTree = "<group>"; };
+		A8CEAC7F2047DA0E00ABBABC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		BB5CC09F2BCF92DB3B5B6EFB /* Pods-TwitterLBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterLBTA.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterLBTA/Pods-TwitterLBTA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,16 +121,24 @@
 		A884559520359FBD00367D3B /* TwitterLBTA */ = {
 			isa = PBXGroup;
 			children = (
+				A8CEAC7E2047D9EE00ABBABC /* Service */,
 				A81B639A203C94C60059B5BD /* Assets.xcassets */,
 				A80407472039C6D70043E459 /* Controller */,
 				A80407462039C6CD0043E459 /* Model */,
 				A80407452039C6BE0043E459 /* View */,
 				A884559620359FBD00367D3B /* AppDelegate.swift */,
-				A88455A82035A29500367D3B /* HomeController.swift */,
 				A884559F20359FBD00367D3B /* LaunchScreen.storyboard */,
 				A88455A220359FBD00367D3B /* Info.plist */,
 			);
 			path = TwitterLBTA;
+			sourceTree = "<group>";
+		};
+		A8CEAC7E2047D9EE00ABBABC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A8CEAC7F2047DA0E00ABBABC /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,11 +218,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TwitterLBTA/Pods-TwitterLBTA-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/LBTAComponents/LBTAComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TRON/TRON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LBTAComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -268,8 +282,8 @@
 				A827076B2043EA380065B53C /* TweetCell.swift in Sources */,
 				A884559720359FBD00367D3B /* AppDelegate.swift in Sources */,
 				A81B639D204330D40059B5BD /* HomeDatasourceController+NavItems.swift in Sources */,
+				A8CEAC802047DA0E00ABBABC /* Service.swift in Sources */,
 				A81B6395203BDDEE0059B5BD /* Users.swift in Sources */,
-				A88455A92035A29500367D3B /* HomeController.swift in Sources */,
 				A81B6397203C11840059B5BD /* UserCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

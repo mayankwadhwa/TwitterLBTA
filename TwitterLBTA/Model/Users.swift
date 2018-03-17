@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
 //Struct is easy to use and automatically gives the constructor for the struct object
 struct User {
     let name: String
     let username: String
     let bioText: String
-    let profileImage: UIImage
+    let profileImageUrl: String
+    
+    init(userJson: JSON) {
+        self.username =  userJson["username"].stringValue
+        self.name = userJson["name"].stringValue
+        self.bioText = userJson["bio"].stringValue
+        self.profileImageUrl = userJson["profileImageUrl"].stringValue
+    }
 }

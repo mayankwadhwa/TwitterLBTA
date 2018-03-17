@@ -7,24 +7,54 @@
 //
 
 import LBTAComponents
+import SwiftyJSON
+import TRON
+
+extension Collection where Iterator.Element == JSON{
+    func decode<T>() -> [T] {
+        return []
+    }
+}
 
 
-class HomeDataSource: Datasource {
+class HomeDataSource: Datasource, JSONDecodable{
     
-    let users: [User] = {
-        let mayankUser = User(name: "Mayank Wadhwa", username: "@mayankwadhwa19", bioText: "I am just an average guy who waste his time like a below average guy", profileImage: #imageLiteral(resourceName: "twitter-Pic"))
-        let manishUser = User(name: "Manish Sharma", username: "@manishsharma", bioText: "I look like a below average joe but don't let my looks fool you because i have a rare ability to not give a fuck about anything", profileImage: #imageLiteral(resourceName: "manish profile pic"))
+    
+    var users: [User]
+    
+    required init(json: JSON) throws {
+        print("Now ready to parse json: \n", json)
         
-        return [mayankUser, manishUser]
-    }()
+        guard let usersJsonarray = json["users"].array,  let tweetsJSONArray = json["tweets"].array else {
+            throw NSError(domain: "com.mayankwadhwa", code: 1, userInfo: [NSLocalizedDescriptionKey: "Parsing JSON was not valid"])
+        }
+        
+        
+//        Below map function return array of objects inside the curly brackets and $0 signify the current object in the array that map function is applied to
+        
+//        self.users = usersJsonarray.map{User(userJson: $0)}
+        
+//        Map Function is equivalent to all the below commented lines
+//        for userJson in usersJsonarray!{
+//            let user = User(userJson: userJson)
+//            users.append(user)
+//        }
+//        self.users = users
+        
     
-    let tweets: [Tweet] = {
-        let mayankUser = User(name: "Mayank Wadhwa", username: "@mayankwadhwa19", bioText: "I am just an average guy who waste his time like a below average guy", profileImage: #imageLiteral(resourceName: "twitter-Pic"))
-        let tweet1 = Tweet(user: mayankUser, message:  "This dude sucks")
-        let manishUser = User(name: "Manish Sharma", username: "@manishsharma", bioText: "I look like a below average joe but don't let my looks fool you because i have a rare ability to not give a fuck about anything", profileImage: #imageLiteral(resourceName: "manish profile pic"))
-        let tweet2 = Tweet(user: manishUser, message: "Mayank Sucks you asshole you could have hold my hand and become a great programmer but you prefer to do pussy hunting at which you miserably failed, while i was able to convince a chick to be my girlfriend even though she hated my guts in first year while you fail to pickup deeksha who might be into you and you don't realise because of your insecurities")
-        return [tweet1, tweet2]
-    }()
+//        self.tweets = tweetsJSONArray.map{Tweet(tweetJson: $0)}
+        
+//        for tweetJson in tweetsJSONArray! {
+//            let tweet = Tweet(tweetJson: tweetJson)
+//            tweets.append(tweet)
+//        }
+        
+        self.users = usersJsonarray.decode()
+        self.tweets = tweetsJSONArray.decode()
+    }
+
+    
+    var tweets: [Tweet]
     
     override func headerClasses() -> [DatasourceCell.Type]? {
         return [UserHeader.self]

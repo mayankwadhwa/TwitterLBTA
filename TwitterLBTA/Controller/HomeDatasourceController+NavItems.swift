@@ -14,10 +14,10 @@ extension HomeDataSourceController {
         let titleImageView = UIImageView(image: #imageLiteral(resourceName: "title_icon"))
         //        titleImageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
         navigationItem.titleView = titleImageView
-        
+//        changing navigation bar color
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
-        
+//        Removing the 3d effect of navigationbar
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
